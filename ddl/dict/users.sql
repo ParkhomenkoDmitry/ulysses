@@ -11,9 +11,9 @@ BEGIN;
 		hash TEXT NOT NULL,
 		userFullName TEXT NOT NULL,
 		timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		CONSTRAINT UNIQUE (login),
+		CONSTRAINT login UNIQUE (login),
 		CONSTRAINT sourceId
-			FOREIGN KY (sourceId)
+			FOREIGN KEY (sourceId)
 			REFERENCES sources (sourceId),
 		CONSTRAINT groupId
 			FOREIGN KEY (groupId)

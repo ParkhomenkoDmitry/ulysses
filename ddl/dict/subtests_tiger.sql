@@ -6,6 +6,6 @@ BEGIN;
 		subtestTigerId INTEGER NOT NULL,
 		CONSTRAINT subtestId
 			FOREIGN KEY (subtestId)
-			REFERENCES subtests (subtestId),
+			REFERENCES subtests (subtestId)
 	) WITHOUT ROWID;
 COMMIT;

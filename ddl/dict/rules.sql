@@ -2,16 +2,17 @@ PRAGMA foreign_keys = 1;
 
 BEGIN;
 	CREATE TABLE rules (
-		levelId INTEGER PRIMARY KEY NOT NULL,
-		subtestId INTEGER PRIMARY KEY NOT NULL,
-		maxPoints INTEGER PRIMARY KEY NOT NULL,
-		warnMark INTEGER PRIMARY KEY NOT NULL,
-		failMark INTEGER PRIMARY KEY NOT NULL,
+		levelId INTEGER NOT NULL,
+		subtestId INTEGER NOT NULL,
+		maxPoints INTEGER NOT NULL,
+		warnMark INTEGER NOT NULL,
+		failMark INTEGER NOT NULL,
 		CONSTRAINT levelId
 			FOREIGN KEY (levelId)
 			REFERENCES levels (levelId),
 		CONSTRAINT subtestId
 			FOREIGN KEY (subtestId)
-			REFERENCES subtests (subtestId)
+			REFERENCES subtests (subtestId),
+		PRIMARY KEY (levelId, subtestId)
 	) WITHOUT ROWID;
 COMMIT;
