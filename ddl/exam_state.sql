@@ -8,8 +8,8 @@ BEGIN;
 		examStateId INTEGER NOT NULL,
 		timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		CONSTRAINT examId FOREIGN KEY (examId) REFERENCES exam (examId),
-		CONSTRAINT examState
-			FOREIGN KEY (examState)
-			REFERENCES exam_states (examState)
+		CONSTRAINT examStateId
+			FOREIGN KEY (examStateId)
+			REFERENCES exam_states (examStateId)
 	) WITHOUT ROWID;
 COMMIT;
