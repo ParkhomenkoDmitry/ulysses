@@ -2,13 +2,10 @@ PRAGMA foreign_keys = 1;
 
 BEGIN;
 	CREATE TABLE person_scan (
-		id INTEGER PRIMARY KEY NOT NULL CHECK (typeof(id) = "integer"),
-		version INTEGER NOT NULL CHECK (typeof(version) = "integer"),
-		personId INTEGER NOT NULL,
-		personScanId TEXT NOT NULL,
-		timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		CONSTRAINT personId
-			FOREIGN KEY (personId)
-			REFERENCES person (personId)
+		scan_pers_personId INTEGER NOT NULL,
+		scan_personScan TEXT NOT NULL,
+		scan_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		scan_delDate TEXT NULL,
+		CONSTRAINT scan_pers_personId FOREIGN KEY (scan_pers_personId) REFERENCES person (pers_personId)
 	) WITHOUT ROWID;
 COMMIT;

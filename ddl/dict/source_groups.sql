@@ -6,7 +6,7 @@ BEGIN;
 		certIssuerId INTEGER NOT NULL,
 		mask INTEGER NOT NULL,
 		groupBalance INTEGER NOT NULL,
-		groupShortName TEXT NOT NULL,
+		groupName TEXT NOT NULL,
 		groupFullName TEXT NOT NULL,
 		groupInfo TEXT NOT NULL,
 		groupStartDate TEXT NOT NULL,
