@@ -2,13 +2,10 @@ PRAGMA foreign_keys = 1;
 
 BEGIN;
 	CREATE TABLE exam_video (
-		id INTEGER PRIMARY KEY NOT NULL CHECK (typeof(id) = "integer"),
-		version INTEGER NOT NULL CHECK (typeof(version) = "integer"),
-		examId INTEGER NOT NULL,
-		examVideoId TEXT NOT NULL,
-		timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		CONSTRAINT examId
-			FOREIGN KEY (examId)
-			REFERENCES exam (examId)
+		evid_examId INTEGER NOT NULL,  --Index
+		evid_examVideo TEXT NOT NULL,
+		evid_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--		evid_examVideo unique?
+		CONSTRAINT evid_examId FOREIGN KEY (evid_examId) REFERENCES exam (exam_examId)
 	) WITHOUT ROWID;
 COMMIT;

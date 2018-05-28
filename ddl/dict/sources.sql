@@ -6,9 +6,10 @@ BEGIN;
 		groupId INTEGER NOT NULL,
 		certIssuerId INTEGER NOT NULL,
 		locationId INTEGER NOT NULL,
-		sourceIsAlive INTEGER NOT NULL,
+		sourceIsAlive INTEGER NOT NULL
+			CHECK (sourceIsAlive IN (0, 1)),
 		mask INTEGER NOT NULL,
-		sourceShortName TEXT NOT NULL,
+		sourceName TEXT NOT NULL,
 		sourceFullName TEXT NOT NULL,
 		timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		CONSTRAINT groupId
@@ -17,7 +18,8 @@ BEGIN;
 		CONSTRAINT certIssuerId
 			FOREIGN KEY (certIssuerId)
 			REFERENCES cert_issuers (certIssuerId),
-		CONSTRAINT sourceIsAlive
-			CHECK (sourceIsAlive IN (0, 1))
+		CONSTRAINT locationId
+			FOREIGN KEY (locationId)
+			REFERENCES locations (locationId)
 	) WITHOUT ROWID;
 COMMIT;

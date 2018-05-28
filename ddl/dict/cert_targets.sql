@@ -4,7 +4,7 @@ PRAGMA foreign_keys = 1;
 
 BEGIN;
 	CREATE TABLE cert_targets (
-		certTargetId INTEGER PRIMARY KEY NOT NULL,
-		certTargetName TEXT NOT NULL
+		ctrg_certTargetId INTEGER PRIMARY KEY NOT NULL,
+		ctrg_name TEXT NOT NULL
 	) WITHOUT ROWID;
 COMMIT;

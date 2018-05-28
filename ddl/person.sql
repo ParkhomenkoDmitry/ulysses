@@ -4,49 +4,34 @@ PRAGMA foreign_keys = 1;
 
 BEGIN;
 	CREATE TABLE person (
-		id INTEGER PRIMARY KEY NOT NULL CHECK (typeof(id) = "integer"),
-		version INTEGER NOT NULL CHECK (typeof(version) = "integer"),
-		personId INTEGER NOT NULL,
-		fnRu TEXT NOT NULL,
-		lnRu TEXT NOT NULL,
-		fnEn TEXT NOT NULL,
-		lnEn TEXT NOT NULL,
-		genderId INTEGER NOT NULL,
-		bDate TEXT NOT NULL,
-		countryId INTEGER NOT NULL,
-		identId INTEGER NOT NULL,
-		identDate TEXT NOT NULL,
-		identAuth TEXT NOT NULL,
-		ident1 TEXT NOT NULL,
-		ident2 TEXT NOT NULL,
-		mc1 TEXT NOT NULL,
-		mc2 TEXT NOT NULL,
-		timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		CONSTRAINT personId_version UNIQUE (personId, version),
+		pers_personId INTEGER PRIMARY KEY NOT NULL CHECK (typeof(id) = "integer"),
+		pers_fn_nameId INTEGER NOT NULL CHECK (typeof(id) = "integer"),
+		pers_ln_nameId INTEGER NOT NULL CHECK (typeof(id) = "integer"),
+		pers_genderId INTEGER NOT NULL CHECK (typeof(id) = "integer"),
+		pers_bDate TEXT NOT NULL,
+		pers_countryId INTEGER NOT NULL CHECK (typeof(id) = "integer"),
+		pers_pdoc_identId INTEGER NOT NULL CHECK (typeof(id) = "integer"),
+		pers_mc1 TEXT NOT NULL,
+		pers_mc2 TEXT NOT NULL,
+		pers_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		CONSTRAINT person UNIQUE (
-			fnRu,
-			lnRu,
-			fnEn,
-			lnEn,
-			genderId,
-			bDate,
-			countryId,
-			identId,
-			identDate,
-			identAuth,
-			ident1,
-			ident2,
-			mc1,
-			mc2
+			pers_fn_nameId,
+			pers_ln_nameId,
+			pers_genderId,
+			pers_bDate,
+			pers_countryId,
+			pers_pdoc_identId,
+			pers_mc1,
+			pers_mc2
 		),
-		CONSTRAINT gender
-			FOREIGN KEY (genderId)
+		CONSTRAINT pers_genderId
+			FOREIGN KEY (pers_genderId)
 			REFERENCES genders (genderId),
-		CONSTRAINT countryId
-			FOREIGN KEY (countryId)
+		CONSTRAINT pers_countryId
+			FOREIGN KEY (pers_countryId)
 			REFERENCES countries (countryId),
-		CONSTRAINT identId
-			FOREIGN KEY (identId)
-			REFERENCES identTypes (identId)
+		CONSTRAINT pers_pdoc_identId
+			FOREIGN KEY (pers_pdoc_identId)
+			REFERENCES pers_docs (pdoc_identId)
 	) WITHOUT ROWID;
 COMMIT;
